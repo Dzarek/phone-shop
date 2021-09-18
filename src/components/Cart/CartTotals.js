@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import PayPalButton from "./PayPalButton";
+// import PayPalButton from "./PayPalButton";
 import { ButtonContainer } from "../Button";
 import loadingG from "./loading.gif";
 
