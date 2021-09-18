@@ -15,11 +15,34 @@ class ProductProvider extends Component {
     cartSubtotal: 0,
     cartTax: 0,
     cartTotal: 0,
+    modalPaymentOpen: false,
+    loading: false,
   };
 
   componentDidMount() {
     this.setProducts();
   }
+
+  handleChangeOpen = () => {
+    this.setState({
+      loading: true,
+      modalPaymentOpen: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        loading: false,
+      });
+    }, 3000);
+  };
+  handleChangeClose = () => {
+    this.setState(
+      {
+        modalPaymentOpen: false,
+        loading: false,
+      },
+      () => this.clearCart()
+    );
+  };
 
   setProducts = () => {
     let tempProducts = [];
@@ -167,6 +190,8 @@ class ProductProvider extends Component {
           decrement: this.decrement,
           removeItem: this.removeItem,
           clearCart: this.clearCart,
+          handleChangeOpen: this.handleChangeOpen,
+          handleChangeClose: this.handleChangeClose,
         }}
       >
         {this.props.children}
